@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ArrayList<Author> authors = new ArrayList<>();
         ArrayList<Book> books = new ArrayList<>();
         readAuthors(authors, books);
@@ -16,14 +16,13 @@ public class Main {
         Supplier<Stream<Book>> bookSupply = () -> books.stream();
         Stream<Author> authorStream = authors.stream();
         System.out.println("------Книги с числом страниц > 200:------");
-        //bookSupply.get().filter(b -> b.numberOfPages > 200).forEach(b -> printBook(b));
-        bookSupply.get().filter(b -> b.numberOfPages > 200)
-                .peek(b-> System.out.println("Эта книга имеет больше 200 страниц:"+b.title));
+        bookSupply.get().filter(b -> b.numberOfPages > 200).forEach(b -> printBook(b));
+        bookSupply.get().filter(b -> b.numberOfPages > 200).parallel().peek(b-> System.out.println("Эта книга имеет больше 200 страниц:"+b.title));
         System.out.println("------Книги с единственным автором:------");
         bookSupply.get().filter(b -> b.authors.size() == 1).forEach(b -> printBook(b));
         System.out.println("------Книга с максимальным числом страниц:------");
-        Book maxbook = bookSupply.get().max(Comparator.comparingInt(b -> b.numberOfPages)).get();
-        printBook(maxbook);
+        Optional<Book> maxbook = Optional.of(bookSupply.get().max(Comparator.comparingInt(b -> b.numberOfPages)).get());
+        printBook(maxbook.orElseThrow(Exception::new));
         System.out.println("------Книга с минимальным числом страниц:------");
         Optional<Book> minbook = Optional.of(bookSupply.get().min(Comparator.comparingInt(b -> b.numberOfPages)).get());
         if (minbook.isPresent()) {
@@ -31,6 +30,7 @@ public class Main {
         } else {
             System.out.println("Такая книга отсутствует");
         }
+
         System.out.println("------Книги упорядочены по количеству страниц:------");
         bookSupply.get().sorted(Comparator.comparingInt(b -> b.numberOfPages)).forEach(a -> printBook(a));
         System.out.println("------Книги упорядочены по названию:------");
