@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lab2</string>
+    <string name="button1">OKAY</string>
+    <string name="second_activity">Second Activity</string>
+    <string name="main_activity">First Activity</string>
+    <string name="error_message">Empty value</string>
+</resources>
