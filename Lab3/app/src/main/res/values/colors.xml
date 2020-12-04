@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="khaki">#F0E68C</color>
+    <color name="lime">#00FF00</color>
+    <color name="ltgreen">#90EE90</color>
+    <color name="indigo">#4B0082</color>
+    <color name="cayan">#008B8B</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
