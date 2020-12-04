@@ -3,4 +3,7 @@
     <string name="menu_addition">addition</string>
     <string name="menu_subtraction">subtraction</string>
     <string name="menu_multiplication">multiplication</string>
+    <string name="result">Result</string>
+    <string name="first_number">first number</string>
+    <string name="second_number">second number</string>
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="result">Result</string>
+    <string name="first_number">first number</string>
+    <string name="second_number">second number</string>
+</resources>
